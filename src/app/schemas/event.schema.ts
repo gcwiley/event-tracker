@@ -1,5 +1,5 @@
 // define a schema for the 'events' collection
-export const eventSchmea = {
+export const eventSchema = {
    title: 'event schema',
    description: 'events schema',
    version: 0,
@@ -17,12 +17,23 @@ export const eventSchmea = {
       category: {
          type: 'string',
       },
-      country: {
-         type: 'boolean',
+      countryOfOrgin: {
+         type: 'string',
       },
       summary: {
          type: 'string',
       },
+      assessment: {
+         type: 'string',
+      },
+      date: {
+         type: 'string',
+         format: 'date-time',
+      },
+      timestamp: {
+         type: 'string',
+         format: 'date-time',
+      },
    },
-   required: ['id', 'title', 'category', 'country', 'summary'],
+   required: ['id', 'title', 'category', 'countryOfOrgin', 'summary', 'assessment', 'date', 'timestamp'],
 };

@@ -7,45 +7,24 @@ import { RxDatabase, createRxDatabase } from 'rxdb';
 import { getRxStorageDexie } from 'rxdb/plugins/dexie';
 
 // import the event schema
-import { eventSchmea } from '../../schemas/event.schema';
+import { eventSchema } from '../schemas/event.schema';
 
 // import the task schema
-import { taskSchema } from '../../schemas/task.schema';
+import { taskSchema } from '../schemas/task.schema';
 
-async function createTest(): Promise<RxDatabase> {
-   const test = await createRxDatabase({
-      name: 'test',
-      storage: getRxStorageDexie(),
-      password: '1234',
-      multiInstance: true,
-      eventReduce: true,
-      ignoreDuplicate: true,
-   });
-
-   await test.addCollections({
-      events: {
-         schema: eventSchmea, // fix spelling!!
-      },
-      tasks: {
-         schema: taskSchema, // fix spelling!!
-      }
-   })
-
-   return test
-}
-
+// create the database and set up collections
 @Injectable({ providedIn: 'root' })
 export class DatabaseService {
-   // create the events database
+   // create the event tracker database
    async createDatabase(): Promise<RxDatabase> {
-      // the database is created by the asynchronous '.createRxDatabase()' function of the core RxDB module.
+      // the database is created by the asynchronous 'createRxDatabase()' function of the core RxDB module
       const database = await createRxDatabase({
          // the name of the database
          name: 'event-tracker-database',
          // use the dexie.js RxStorage that stores data in IndexDB
          storage: getRxStorageDexie(),
          // set the password
-         password: 'mypassword33',
+         password: 'mypassword1033',
          // comment
          multiInstance: true,
          // comment
@@ -54,11 +33,11 @@ export class DatabaseService {
          ignoreDuplicate: true,
       });
 
-      // create an collection with the event schema
+      // create an collection with the event and tracker schema
       await database.addCollections({
          events: {
             // comment here
-            schema: eventSchmea,
+            schema: eventSchema,
          },
          tasks: {
             schema: taskSchema,
@@ -68,5 +47,3 @@ export class DatabaseService {
       return database;
    }
 }
-
-get

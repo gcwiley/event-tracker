@@ -9,7 +9,7 @@ export const taskSchema = {
    properties: {
       id: {
          type: 'string',
-         maxLength: 100,
+         maxLength: 100, // the primary key must have a set maxLength
       },
       name: {
          type: 'string',
@@ -20,6 +20,10 @@ export const taskSchema = {
       completed: {
          type: 'boolean',
       },
+      timestamp: {
+         type: 'string',
+         format: 'date-time',
+      },
    },
-   required: ['id', 'name', 'description', 'completed'],
+   required: ['id', 'name', 'description', 'completed', 'timestamp'],
 };

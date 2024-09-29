@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-event-grid',
-  standalone: true,
-  imports: [],
-  templateUrl: './event-grid.component.html',
-  styleUrl: './event-grid.component.scss'
+   selector: 'app-event-grid',
+   templateUrl: './event-grid.component.html',
+   styleUrl: './event-grid.component.scss',
+   standalone: true,
+   imports: [],
 })
-export class EventGridComponent {
-
-}
+export class EventGridComponent {}

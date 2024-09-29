@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 // import the database service
 import { DatabaseService } from './database.service';
@@ -8,7 +7,7 @@ import { DatabaseService } from './database.service';
    providedIn: 'root',
 })
 export class EventService {
-   // comment here
+   // inject the database service
    constructor(private databaseService: DatabaseService) {}
 
    // GET: all events from the database

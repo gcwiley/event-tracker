@@ -50,19 +50,22 @@ export class EventFormComponent implements OnInit {
    });
 
    ngOnInit(): void {
-     
+      this.onSaveEvent();
    }
 
    onSaveEvent(): void {
-    if (this.mode === 'create') {
-      this.eventService.addEvent(this.eventForm.value).then(() => {
-         // navigate user back to homepage
-         this.router.navigateByUrl('/')
-      }).catch(() => {
-         console.log('There was an error!')
-      })
-    } else {
-      this.eventService
-    }
+      if (this.mode === 'create') {
+         this.eventService
+            .addEvent(this.eventForm.value)
+            .then(() => {
+               // navigate user back to homepage
+               this.router.navigateByUrl('/');
+            })
+            .catch(() => {
+               console.log('There was an error!');
+            });
+      } else {
+         this.eventService;
+      }
    }
 }

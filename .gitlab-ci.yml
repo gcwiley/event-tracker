@@ -1,0 +1,26 @@
+# NOTE: use this only when deploying to gitlab pages.
+
+# uses the latest version of node
+image: node:latest
+
+pages:
+   cache:
+      paths:
+         - node_modules/
+   stage: deploy
+   script:
+      # installs the angular cli globally
+      - npm install -g @angular/cli@latest
+      # installs the npm packages
+      - npm install
+      # builds the angular app
+      - ng build --base-href=/event-tracker/
+      # creates a directory named public
+      - mkdir -p public
+      # moves the angular app within the dist folder into the public folder
+      - mv dist/event-tracker/browser/* public/
+   artifacts:
+      paths:
+         - public
+   only:
+      - main

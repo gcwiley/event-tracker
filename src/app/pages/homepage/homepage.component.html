@@ -1,46 +1,16 @@
 <app-navbar />
 <app-announcement-banner />
-<header focusOnNavigation class="header-background" aria-label="home-page-header">
-   <!-- header section-->
-   <div class="header-section">
-      <div class="header-headline">
-         <h1>Gregory Wiley</h1>
-         <h2>Web App Developer</h2>
-      </div>
-      <div class="header-start">
-         <a mat-raised-button class="header-button" routerLink="/about">About Me</a>
-      </div>
-      <app-logo class="homepage-logo" />
-   </div>
-</header>
 
-<mat-divider></mat-divider>
 
 <main class="home-page-container">
-   <div class="project-carousel">
-      <!-- project carousel header -->
-      <div class="project-carousel-header">
-         <h2>Recent Projects</h2>
+   <article>
+      <app-event-grid />
+   </article>
 
-         <a mat-button routerLink="/projects">
-            View all projects
-            <mat-icon matButtonIcon iconPositionEnd>chevron_right</mat-icon>
-         </a>
-      </div>
-
-      <!-- CAROUSEL -->
-      <app-carousel>
-         @for (project of recentProjects; track project) {
-         <a>
-            <mat-card>
-               <mat-card-title>
-                  {{ project.title }}
-               </mat-card-title>
-            </mat-card>
-         </a>
-         }
-      </app-carousel>
-   </div>
+   <aside>
+      <app-recent-events />
+   </aside>
+   
 </main>
 
 <app-footer />
