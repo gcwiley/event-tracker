@@ -1,1 +1,10 @@
-<p>recent-events works!</p>
+<mat-list class="recent-events mat-elevation-z1">
+    <span mat-subheader>Recent Events</span>
+    @for (event of recentEvents; track event) {
+    <mat-list-item lines="2">
+       <span matListItemTitle>{{ event.title }}</span>
+       <span matListItemLine>Added: {{ event.countryOfOrgin }}</span>
+    </mat-list-item>
+    <mat-divider/>
+    }
+ </mat-list>

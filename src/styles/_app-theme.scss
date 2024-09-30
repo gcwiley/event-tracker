@@ -1,0 +1,53 @@
+@use '@angular/material' as mat;
+
+// EVENT COMPONENT THEMES
+@use '../app/events/event-form/event-form-theme';
+@use '../app/events/event-grid/event-grid-theme';
+@use '../app/events/recent-events/recent-events-theme';
+
+// TASK COMPONENT THEMES
+@use '../app/tasks/recent-tasks/recent-tasks-theme';
+@use '../app/tasks/task-form/task-form-theme';
+@use '../app/tasks/task-list/task-list-theme';
+
+// PAGE COMPONENT THEMES
+@use '../app/pages/about-page/about-page-theme';
+@use '../app/pages/event-create-page/event-create-page-theme';
+@use '../app/pages/homepage/homepage-theme';
+@use '../app/pages/not-found-page/not-found-page-theme';
+@use '../app/pages/signin-page/signin-page-theme';
+
+// SHARED COMPONENT THEMES
+@use '../app/shared/announcement-banner/announcement-banner-theme';
+@use '../app/shared/classification-banner/classification-banner-theme';
+@use '../app/shared/footer/footer-theme';
+@use '../app/shared/logo/logo-theme';
+@use '../app/shared/navbar/navbar-theme';
+@use '../app/shared/world-clock/world-clock-theme';
+
+// styles for the app that are based on the currrent theme
+@mixin theme($theme) {
+    // event components
+    @include event-form-theme.theme($theme);
+    @include event-grid-theme.theme($theme);
+    @include recent-events-theme.theme($theme);
+
+    // task components
+    @include recent-tasks-theme.theme($theme);
+    @include task-form-theme.theme($theme);
+    @include task-list-theme.theme($theme);
+
+    // page components
+    @include about-page-theme.theme($theme);
+    @include event-create-page-theme.theme($theme);
+    @include homepage-theme.theme($theme);
+    @include not-found-page-theme.theme($theme);
+    @include signin-page-theme.theme($theme);
+
+    // shared components
+    @include announcement-banner-theme.theme($theme);
+    @include classification-banner-theme.theme($theme);
+    @include footer-theme.theme($theme);
+    @include navbar-theme.theme($theme);
+    @include world-clock-theme.theme($theme);
+}

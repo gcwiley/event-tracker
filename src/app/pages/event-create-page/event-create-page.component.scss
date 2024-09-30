@@ -1,0 +1,16 @@
+.event-create-page-container {
+   max-width: 1200px;
+   margin: auto;
+   display: flex;
+   flex-direction: row;
+}
+
+.event-form {
+   flex-basis: 70%;
+   max-width: 70%;
+}
+
+.recent-events {
+   flex-basis: 30%;
+   max-width: 30%;
+}

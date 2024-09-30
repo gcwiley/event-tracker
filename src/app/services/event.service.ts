@@ -39,4 +39,18 @@ export class EventService {
          throw error;
       }
    }
+
+   // GET: recently created events in database
+   async getRecentlyCreatedEvents(): Promise<any> {
+      try {
+         const db = await this.databaseService.createDatabase();
+         const recentEvents = db['events'].find({
+            selector: {},
+            sort: [{ country: 'asc' }],
+         });
+         return recentEvents;
+      } catch (error) {
+         console.log(error);
+      }
+   }
 }

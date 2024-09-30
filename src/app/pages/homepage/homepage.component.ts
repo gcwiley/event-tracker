@@ -1,17 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-// import the angular material modules
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatIconModule } from '@angular/material/icon';
+// import the shared components
+import { NavbarComponent, AnnouncementBannerComponent, ClassificationBannerComponent, FooterComponent } from '../../shared';
+
+// import the event components
+import { EventGridComponent, RecentEventsComponent } from '../../events/index';
 
 @Component({
    selector: 'app-homepage',
    templateUrl: './homepage.component.html',
-   styleUrl: './homepage.component.css',
+   styleUrl: './homepage.component.scss',
    standalone: true,
-   imports: [],
+   imports: [
+      NavbarComponent,
+      AnnouncementBannerComponent,
+      ClassificationBannerComponent,
+      FooterComponent,
+      EventGridComponent,
+      RecentEventsComponent,
+   ],
 })
 export class HomepageComponent {}

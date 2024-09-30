@@ -1,3 +1,45 @@
-<form>
-    
+<form [formGroup]="eventForm" novalidate (ngSubmit)="onSaveEvent()">
+    <mat-card class="event-form" appearance="outlined">
+        <mat-card-header>
+            <mat-card-title>New Event</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <div class="row">
+                <div class="column">
+                    <!-- title (title) -->
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Title</mat-label>
+                        <input matInput type="text" formControlName="title">
+                        <mat-error>Please enter an event title.</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="column">
+                    <!-- category (category) -->
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Category</mat-label>
+                        <input matInput type="text" formControlName="category">
+                        <mat-error>Please enter an event category.</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="column">
+                    <!-- country of Orgin (countryOfOrgin) -->
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Country</mat-label>
+                        <input matInput type="text" formControlName="country">
+                        <mat-error>Please enter a country.</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions class="card-actions">
+            <button mat-flat-button color="primary" type="submit" [disabled]="!eventForm.valid">Add</button>
+            <button mat-flat-button color="warn" type="button">Clear</button>
+         </mat-card-actions>
+    </mat-card>
+
 </form>
