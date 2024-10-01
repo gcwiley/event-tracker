@@ -5,7 +5,15 @@ export interface Event {
    category: string;
    countryOfOrgin: string;
    summary: string;
-   assessment: string,
+   assessment: string;
    date: string;
    timestamp: string;
 }
+
+// define the event category interface
+export interface EventCategory {
+   value: string;
+   viewValue: string;
+}
+
+

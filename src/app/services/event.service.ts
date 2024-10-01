@@ -17,10 +17,25 @@ export class EventService {
          const db = await this.databaseService.createDatabase(); // get the database instance
          const allEvents = db['events'].find({
             selector: {},
-            // sort the results country
+            // sort the results by country
             sort: [{ country: 'asc' }],
          });
          return allEvents;
+      } catch (error) {
+         console.log(error);
+      }
+   }
+
+   // GET: recently events in database - 10 most recent
+   async getRecentEvents(): Promise<any> {
+      try {
+         const db = await this.databaseService.createDatabase(); // get the database instance
+         const recentEvents = db['events'].find({
+            selector: {},
+            sort: [{ createdAt: 'desc' }],
+            limit: 10
+         });
+         return recentEvents;
       } catch (error) {
          console.log(error);
       }
@@ -40,17 +55,21 @@ export class EventService {
       }
    }
 
-   // GET: recently created events in database
-   async getRecentlyCreatedEvents(): Promise<any> {
+   // comment
+   async updateEvent(): Promise<any> {
       try {
-         const db = await this.databaseService.createDatabase();
-         const recentEvents = db['events'].find({
-            selector: {},
-            sort: [{ country: 'asc' }],
-         });
-         return recentEvents;
+         const db = await this.databaseService.createDatabase()
       } catch (error) {
-         console.log(error);
+         
+      }
+   }
+
+   // comment
+   async deleteEvent(): Promise<any> {
+      try {
+         const db = await this.databaseService.createDatabase()
+      } catch (error) {
+         
       }
    }
 }

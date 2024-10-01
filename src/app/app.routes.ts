@@ -5,9 +5,11 @@ import { AboutPageComponent, EventCreatePageComponent, HomepageComponent, NotFou
 
 export const routes: Routes = [
    // home page
-   { path: '', component: HomepageComponent },
+   { path: '', component: SigninPageComponent },
    // sign in page
    { path: 'signin', component: SigninPageComponent },
+   // home page
+   { path: 'home', component: HomepageComponent },
    // create event page
    { path: 'create-event', component: EventCreatePageComponent },
    // about page

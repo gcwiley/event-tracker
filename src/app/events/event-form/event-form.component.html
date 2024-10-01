@@ -35,9 +35,29 @@
                     </mat-form-field>
                 </div>
             </div>
+            <div class="row">
+                <div class="column">
+                    <!-- summary (summary) -->
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Summary</mat-label>
+                        <textarea matInput rows="6" formControlName="summary"></textarea>
+                        <mat-error>Please provide a summary</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <!-- assessment (assessment) -->
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Assessment</mat-label>
+                        <textarea matInput rows="6" formControlName="summary"></textarea>
+                        <mat-error>Please provide an assessment</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
         </mat-card-content>
         <mat-card-actions class="card-actions">
-            <button mat-flat-button color="primary" type="submit" [disabled]="!eventForm.valid">Add</button>
+            <button mat-flat-button color="primary" type="submit" [disabled]="!eventForm.valid">Create</button>
             <button mat-flat-button color="warn" type="button">Clear</button>
          </mat-card-actions>
     </mat-card>

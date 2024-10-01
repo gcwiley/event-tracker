@@ -1,24 +1,20 @@
-<mat-toolbar>
+<mat-toolbar class="navbar">
 
-   <button mat-icon-button class="example-icon" aria-label="">
-     <mat-icon>menu</mat-icon>
-   </button>
+   <a mat-icon-button routerLink="/" aria-label="home-button">
+     <mat-icon>home</mat-icon>
+   </a>
    <span>Event Tracker</span>
-
-   <a routerLink="/create-event">Create Event</a>
-
-   <a routerLink="/about">About Page</a>
-
-   <a routerLink="/signin">Sign In Page</a>
 
    <span class="spacer"></span>
 
-   <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-     <mat-icon>favorite</mat-icon>
-   </button>
+   <a mat-raised-button routerLink="/create-event">Create Event</a>
 
-   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-     <mat-icon>share</mat-icon>
+   <a mat-raised-button routerLink="/about">About Page</a>
+
+   <a mat-raised-button routerLink="/signin">Sign In Page</a>
+
+   <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+     <mat-icon>settings</mat-icon>
    </button>
 
  </mat-toolbar>

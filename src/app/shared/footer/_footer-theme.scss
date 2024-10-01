@@ -3,8 +3,8 @@
 // color mixin
 @mixin color($theme) {
    .footer {
-      color: mat.get-theme-color($theme, error, 0);
-      background-color: mat.get-theme-color($theme, error, 80);
+      color: mat.get-theme-color($theme, primary, 0);
+      background-color: mat.get-theme-color($theme, primary, 80);
    }
 }
 // typography mixin

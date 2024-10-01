@@ -28,6 +28,8 @@ export class RecentEventsComponent implements OnInit {
    }
 
    getRecentEvents(): void {
-      this.eventService.getRecentlyCreatedEvents().then();
+      this.eventService.getRecentEvents().then((recentEvents) => {
+         this.recentEvents = recentEvents
+      });
    }
 }
