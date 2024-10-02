@@ -11,7 +11,7 @@ export class TaskService {
    constructor(private databaseService: DatabaseService) {}
 
    // GET: all tasks from the database
-   async getTasks(): Promise<any> {
+   async getTasks(): Promise<unknown> {
       try {
          // call the 'createDatabase()' method to get the database instance
          const db = await this.databaseService.createDatabase(); // get the database instance
@@ -23,6 +23,7 @@ export class TaskService {
          return allTasks;
       } catch (error) {
          console.log(error);
+         return new Error
       }
    }
 }
