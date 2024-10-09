@@ -3,7 +3,9 @@ export interface Event {
    id?: string;
    title: string;
    category: string;
-   countryOfOrgin: string;
+   countryLocation: string;
+   latitude: string,
+   longitude: string,
    summary: string;
    assessment: string;
    date: string;

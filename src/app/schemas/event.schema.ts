@@ -13,11 +13,18 @@ export const eventSchema = {
       },
       title: {
          type: 'string',
+         maxLength: 100,
       },
       category: {
          type: 'string',
       },
-      countryOfOrgin: {
+      countryLocation: {
+         type: 'string',
+      },
+      latitude: {
+         type: 'string'
+      },
+      longitude: {
          type: 'string',
       },
       summary: {

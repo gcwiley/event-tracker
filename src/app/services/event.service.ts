@@ -3,6 +3,12 @@ import { Injectable } from '@angular/core';
 // import the database service
 import { DatabaseService } from './database.service';
 
+import { RxDatabase, RxQuery, RxDocument, RxCollection } from 'rxdb';
+
+// import the event interface
+import { Event } from '../types/event.interface';
+import { Observable } from 'rxjs';
+
 @Injectable({
    providedIn: 'root',
 })
@@ -10,65 +16,102 @@ export class EventService {
    // inject the database service
    constructor(private databaseService: DatabaseService) {}
 
-   // GET: all events from the database
-   async getEvents(): Promise<unknown> {
+   // CREATE NEW EVENT
+   async createEvent(newEvent: Event): Promise<RxDatabase | unknown> {
       try {
-         // call the 'createDatabase()' method of the databaseService to get the database instance
-         const db = await this.databaseService.createDatabase(); // get the database instance
-         const allEvents = db['events'].find({
-            selector: {},
-            // sort the results by country
-            sort: [{ country: 'asc' }],
-         });
-         // return all events
-         return allEvents;
+         // call the createDatabase() method on the databaseService to get the database instance
+         const db = await this.databaseService.createDatabase();
+         // access the event collection and use the insert method to insert a new event into the event collection
+         const response = db['events'].insert(newEvent);
+         return response;
       } catch (error) {
-         console.log('Error adding event:', error);
-         return new Error('There was an error');
+         console.error('Error creating event:', error);
+         return new Error('There was an error getting the event.');
+      }
+   }
+
+   // GET ALL EVENTS
+   async getAllEvents(): Promise<any | Event[]> {
+      // call the 'createDatabase()' method of the databaseService to get the database instance
+      const db = await this.databaseService.createDatabase();
+      // access the event collection and uses the find() method to search event collections
+      return db['events'].find({
+         selector: {},
+         // sort all found events by country
+         sort: [{ country: 'desc' }],
+      });
+   }
+
+   // GET EVENT BY ID - simplefy code
+   async getEventById(id: string | null): Promise<any | Event> {
+      try {
+         // call the createDatabase() method on the databaseService to get the database instance
+         const db = await this.databaseService.createDatabase();
+         // access the event collection and use the findOne() method to find one event by id
+         const event = db['events'].findOne({
+            // use the event id as a selector
+            selector: {
+               id: id,
+            },
+         });
+         // return the single event
+         return event;
+      } catch (error) {
+         console.log('Error getting event', error);
+         return new Error('There was an error getting the event.');
       }
    }
 
    // GET: recently events in database - 10 most recent
-   async getRecentEvents(): Promise<unknown> {
+   async getRecentEvents(): Promise<any | Event[]> {
+      // call the createDatabase() method on the databaseService to get the database instance
+      const db = await this.databaseService.createDatabase();
+      // access the event collection and use the insert find method to find recent events
+      const recentEvents = db['events'].find({
+         selector: {},
+         // sort by date in descending order
+         sort: [{ date: 'desc' }],
+         // limit the results to 10
+         limit: 10,
+      }).exec()
+      return recentEvents
+   }
+
+   // UPDATE EVENT
+   async updateEvent(id: string, event: Event): Promise<RxDatabase | RxQuery | RxDocument | unknown> {
       try {
-         const db = await this.databaseService.createDatabase(); // get the database instance
-         const recentEvents = db['events'].find({
-            selector: {},
-            sort: [{ createdAt: 'desc' }],
-            limit: 10,
+         // call the createDatabase() method on the databaseService to get the database instance
+         const db = await this.databaseService.createDatabase();
+         return db['events'].findOne({
+            // use the event id as a selector
+            selector: {
+               id: id,
+            },
          });
-         return recentEvents;
       } catch (error) {
-         console.log('Error adding event:', error);
-         return new Error('There was an error');
+         console.log('Error updating event', error);
+         return new Error('Error updating event');
       }
    }
 
-   // this asynchronous function takes a newEvent object as input.
-   async addEvent(newEvent: object): Promise<unknown> {
+   // DELETE EVENT
+   async deleteEvent(id: string): Promise<RxDatabase | RxQuery | unknown> {
       try {
-         // get the database instance
+         // call the createDatabase() method on the databaseService to get the database instance
          const db = await this.databaseService.createDatabase();
-         // comment
-         const response = await db['events'].insert(newEvent);
-         return response;
+         // use rxdb 'findOne()' method to find the document by its ID and then call 'remove()' on the found document.
+         return db['events']
+            .findOne({
+               // use the id as a selector
+               selector: {
+                  id: id,
+               },
+               // remove the event from the collection
+            })
+            .remove();
       } catch (error) {
-         console.error('Error adding event:', error);
-         return new Error('There was an error');
+         console.log('Unable to delete Event', error);
+         return new Error('Unable to delete event');
       }
-   }
-
-   // comment
-   async updateEvent(): Promise<unknown> {
-      try {
-         const db = await this.databaseService.createDatabase();
-      } catch (error) {}
-   }
-
-   // comment
-   async deleteEvent(): Promise<unknown> {
-      try {
-         const db = await this.databaseService.createDatabase();
-      } catch (error) {}
    }
 }

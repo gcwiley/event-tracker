@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgTemplateOutlet, CommonModule } from '@angular/common';
-import { RouterModule, Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 // import the angular material modules
 import { MatIconModule } from '@angular/material/icon';

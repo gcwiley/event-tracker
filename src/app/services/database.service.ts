@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-// comment
+// comment here
 import { RxDatabase, createRxDatabase } from 'rxdb';
 
 // use the dexie.js RxStorage that stores data in IndexDB
@@ -36,12 +36,8 @@ export class DatabaseService {
       // create an collection with the event and tracker schema
       await database.addCollections({
          events: {
-            // comment here
             schema: eventSchema,
-         },
-         tasks: {
-            schema: taskSchema,
-         },
+         }
       });
 
       return database;
