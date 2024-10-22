@@ -1,0 +1,1 @@
+export type PageAction = 'list' | 'create' | 'edit' | 'detail'

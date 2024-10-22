@@ -73,12 +73,19 @@ export class RxdbProvider {
 
       // if no errors, create the database
       this.rxDatabase = await createRxDatabase({
+         // the name of the database
          name: databaseName,
+         // use the dexie.js RxStorage that stores data in IndexDB
          storage: getRxStorageDexie(),
+         // set the password
          password: 'myLongAndStupidPassword',
+         // comment
+         multiInstance: true,
+         // comment
+         ignoreDuplicate: true,
       });
 
-      // adds the collection to database
+      // create the collection with the event schema
       await this.rxDatabase.addCollections({
          posts: {
             schema: dbSchema,
