@@ -1,6 +1,6 @@
 export enum LanguageDto {
-    en = 'en',
-    cs = 'cs',
+  en = 'en',
+  cs = 'cs',
 }
 
-export type Language = `${LanguageDto}`
+export type Language = `${LanguageDto}`;

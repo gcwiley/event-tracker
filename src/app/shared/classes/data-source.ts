@@ -1,6 +1,5 @@
 import { signal } from '@angular/core';
 import { isEqual } from 'lodash';
-
 import { DEFAULT_DATASOURCE_STATE } from '../constants/data-source.constant';
 import { DataSourceState } from '../dto/data-source.dto';
 
@@ -35,5 +34,9 @@ export class DataSource<T> {
     this.updateState();
   }
 
-//   fix this!
+  // comment
+  public setData(data?: T): void {
+    this.data.set(data || this.initialData);
+    this.updateState();
+  }
 }
