@@ -1,6 +1,11 @@
 {
   "name": "myapp",
   "version": "0.0.0",
+  "author": {
+    "name": "Gregory Wiley",
+    "email": "gcwiley@gmail.com",
+    "url": "https://github.com/gcwiley"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -27,13 +32,14 @@
     "rxdb": "^15.34.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "uuid": "^10.0.0",
+    "uuid": "^11.0.3",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^19.0.4",
-    "@angular/cli": "^19.0.4",
+    "@angular-devkit/build-angular": "^19.0.5",
+    "@angular/cli": "^19.0.5",
     "@angular/compiler-cli": "^19.0.4",
+    "@biesbjerg/ngx-translate-extract-marker": "^1.0.0",
     "@types/jasmine": "~5.1.0",
     "angular-eslint": "19.0.2",
     "eslint": "^9.13.0",

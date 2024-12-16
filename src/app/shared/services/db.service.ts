@@ -7,6 +7,7 @@ import { RxDBUpdatePlugin } from 'rxdb/plugins/update';
 import { BehaviorSubject } from 'rxjs';
 
 // define the post schema
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const dbSchema: RxJsonSchema<any> | any = {
   title: 'posts schema',
   version: 0,
