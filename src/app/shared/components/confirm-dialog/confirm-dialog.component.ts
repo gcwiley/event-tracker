@@ -8,10 +8,8 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 
-// comment
 import { TranslateModule } from '@ngx-translate/core';
 
-// comment
 export interface ConfirmDialogData {
   title: string;
   content: string;
