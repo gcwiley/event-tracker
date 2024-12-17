@@ -18,7 +18,7 @@ export class BreadcrumbsPortalService {
   private activePortal = new Subject<Portal>(); // creates a new instance of the Subject class
   // add more here
 
-  public readonly portals = this.activePortal.asObservable();
+  public readonly portal$ = this.activePortal.asObservable();
 
   public setPortal(portal: Portal): void {
     this.activePortal.next(portal);

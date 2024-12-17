@@ -1,13 +1,23 @@
-<header>
-   <mat-toolbar color="primary" role="navigation"> 
-    <nav>
-        <a>Angular RXDB Demo</a>
-        <button mat-button ()>{{ lang }}</button>
-    </nav>
+<header class="sticky top-0 z-10">
+   <mat-toolbar color="primary" role="navigation">
+      <nav class="container flex items-center justify-between gap-2">
+         <a mat-button [routerLink]="['/' | localize]">Angular RXDB Demo</a>
+         <button mat-button (click)="toggleLanguage()" class="uppercase">{{ lang }}</button>
+      </nav>
    </mat-toolbar>
 </header>
 
-<main>
-   <router-outlet /> 
+<main class="flex-1 permanent-main">
+   @if (breadcrumbsPortal$ | async; as portal) {
+   <ng-template [cdkPortalOutlet]="portal" />
+   }
+   <router-outlet />
 </main>
 
+<footer ngxFixedFooter class="fixed bottom-0 w-full text-center">
+   <mat-toolbar color="primary">
+      <div class="container text-sm">
+         {{ 'footer.content' | translate : { endYear } }}
+      </div>
+   </mat-toolbar>
+</footer>
