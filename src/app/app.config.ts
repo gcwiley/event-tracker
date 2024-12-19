@@ -13,11 +13,31 @@ import { provideTranslateVersion } from 'ngx-translate-version';
 import { VERSION } from '../environments/version';
 import { routes } from './app.routes';
 import { CustomErrorHandlerService } from './shared/services/custom-error-handler.service';
-import { }
+import { CustomTitleStrategyService } from './shared/services/custom-title-strategy.service';
+import { MatPaginatorIntlService } from './shared/services/mat-paginator-intl.service';
 
-// import the routes
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+registerLocaleData(localeCs, 'cs-CS');
 
 export const appConfig: ApplicationConfig = {
-   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideAnimationsAsync()],
+   providers: [
+      provideRouter(routes, withViewTransitions()),
+      provideAppVersion({
+         version: VERSION.version,
+      }),
+      provideTranslateVersion(routes, {
+         version: VERSION.version,
+      }),
+      provideFixedFooter({
+         containerSelector: '.permanent-main',
+         cssAttribute: 'margin',
+      }),
+      importProvidersFrom(BrowserModule, BrowserAnimationsModule, MatSnackBarModule, MatDialogModule),
+      { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { verticalPosition: 'top', horizontalPostion: 'right' } },
+      { provide: ErrorHandler, useClass: CustomErrorHandlerService },
+      { provide: TitleStrategy, useClass: CustomTitleStrategyService },
+      {
+         provide: MatPaginatorIntl,
+         useClass: MatPaginatorIntlService,
+      },
+   ],
 };

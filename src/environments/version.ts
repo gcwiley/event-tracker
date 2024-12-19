@@ -1,6 +1,7 @@
 export const VERSION = {
-  author: {
-    name: 'Greg Wiley',
-  },
-  date: 'Today',
+   version: '1',
+   author: {
+      name: 'Greg Wiley',
+   },
+   date: 'Today',
 };
