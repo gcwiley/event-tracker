@@ -1,5 +1,15 @@
 import { CdkPortal, PortalModule } from '@angular/cdk/portal';
-import { ChangeDetectionStrategy, Component, DestroyRef, OnDestroy, OnInit, ViewChild, effect, inject, signal } from '@angular/core';
+import {
+   ChangeDetectionStrategy,
+   Component,
+   DestroyRef,
+   OnDestroy,
+   OnInit,
+   ViewChild,
+   effect,
+   inject,
+   signal,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';

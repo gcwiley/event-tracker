@@ -8,7 +8,7 @@
    }}</a>
 </div>
 }
-<mat-card>
+<mat-card appearance="outlined">
    <mat-card-header>
       <mat-card-subtitle [class.blur-sm]="dataSource.state() === 'loading'">{{ '#' + dataSource.data().id }}</mat-card-subtitle>
       <mat-card-title [class.blur-sm]="dataSource.state() === 'loading'">{{ dataSource.data().title | uppercase }}</mat-card-title>
@@ -25,7 +25,7 @@
 
 <!-- error message -->
 } @if (dataSource.state() === 'error') {
-<mat-card>
+<mat-card appearance="outlined">
    <mat-card-content class="flex flex-col gap-2 text-center">
       <mat-icon aria-hidden="false" [attr.aira-labe]="'uni.aria-label.error-icon' | translate" fontIcon="error" />
       <div>{{ dataSource.error() }}</div>
@@ -35,7 +35,7 @@
 
 <!-- warning message -->
 @if (dataSource.state() === 'empty') {
-<mat-card>
+<mat-card appearance="outlined">
    <mat-card-content class="flex flex-col gap-2 text-center">
       <mat-icon aria-hidden="false" [attr.aira-labe]="'uni.aria-label.warning-icon' | translate" fontIcon="warning" />
       <div>{{ 'error.post-was-not-found' | translate }}</div>

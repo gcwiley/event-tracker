@@ -25,8 +25,11 @@ export class ApiService<T> {
    public create(body: Partial<T>) {
       return from(
          this.collection.insert({
+            // create unique id for new post
             id: uuidv4(),
             ...body,
+            // adds the current date
+            createdAt: new Date().toISOString()
          })
       ).pipe(map((doc) => doc._data));
    }

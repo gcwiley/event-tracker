@@ -10,7 +10,6 @@ import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxAppVersionDirective } from 'ngx-app-version';
 import { Observable } from 'rxjs';
-import { VERSION } from '../environments/version';
 import { DEFAULT_LANGUAGE } from './shared/constants/language.constant';
 import { SeoDirective } from './shared/directives/seo.directive';
 import { BreadcrumbsPortalService } from './shared/services/breadcrumbs-portal.service';
@@ -37,7 +36,7 @@ import { LanguageService } from './shared/services/language.service';
 })
 export class AppComponent implements OnInit {
    private destroyRef = inject(DestroyRef);
-   public endYear = new Date(VERSION.date).getFullYear();
+   public endYear = new Date().getFullYear();
    public breadcrumbsPortal$!: Observable<Portal<unknown>>;
    public lang = DEFAULT_LANGUAGE;
 

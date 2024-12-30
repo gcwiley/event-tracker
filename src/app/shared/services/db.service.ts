@@ -1,32 +1,13 @@
 import { Injectable, isDevMode } from '@angular/core';
-import { RxDatabase, RxJsonSchema, addRxPlugin, createRxDatabase } from 'rxdb';
+import { RxDatabase, addRxPlugin, createRxDatabase } from 'rxdb';
 import { RxDBAttachmentsPlugin } from 'rxdb/plugins/attachments';
 import { RxDBDevModePlugin } from 'rxdb/plugins/dev-mode';
 import { getRxStorageDexie } from 'rxdb/plugins/storage-dexie';
 import { RxDBUpdatePlugin } from 'rxdb/plugins/update';
 import { BehaviorSubject } from 'rxjs';
 
-// define the post schema
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const dbSchema: RxJsonSchema<any> | any = {
-  title: 'posts schema',
-  version: 0,
-  type: 'object',
-  primaryKey: 'id',
-  properties: {
-    id: {
-      type: 'string',
-      primary: true,
-      maxLength: 100,
-    },
-    title: {
-      type: 'string',
-    },
-    body: {
-      type: 'string',
-    },
-  },
-};
+// import the post schema
+import { dbSchema } from '../schemas/schema'
 
 // add a plugin to the library
 async function loadRxDBPlugin(): Promise<void> {

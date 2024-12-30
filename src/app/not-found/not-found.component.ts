@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
   standalone: true,
   selector: 'app-not-found',
   templateUrl: './not-found.component.html',
-  styleUrl: './not-found.component.css',
+  styleUrl: './not-found.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatCardModule, MatIconModule, TranslateModule],
 })

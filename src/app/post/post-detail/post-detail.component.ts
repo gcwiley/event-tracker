@@ -1,17 +1,23 @@
 import { CdkPortal, PortalModule } from '@angular/cdk/portal';
 import { UpperCasePipe } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DestroyRef, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
+import {
+   ChangeDetectionStrategy,
+   ChangeDetectorRef,
+   Component,
+   DestroyRef,
+   OnDestroy,
+   OnInit,
+   ViewChild,
+   inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { LocalizeRouterModule, LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-
 import { delay, switchMap } from 'rxjs';
-
 import { DataSource } from '../../shared/classes/data-source';
 import { DEFAULT_POST } from '../../shared/constants/post.constant';
 import { ROUTE_DEFINITION } from '../../shared/constants/route-definition.constant';

@@ -1,0 +1,1 @@
+1. Have a separate service for handing CRUD operations to the rxdb database.

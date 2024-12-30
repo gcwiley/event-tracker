@@ -22,7 +22,8 @@
 </mat-form-field>
 
 <div class="flex items-end justify-end gap-2">
-   <button>{{ 'uni.clear-filters' | translate }}</button>
+   <button mat-button (click)="onClear()">{{ 'uni.clear-filters' | translate }}</button>
+   
    <a mat-button [routerLink]="['/' + ROUTE_DEFINITION.POSTS.CREATE | localize]">{{ 'uni.create' | translate }}</a>
 </div>
 
@@ -45,7 +46,7 @@
 
    <!-- id -->
    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>{{ 'table.posts.id.title ' | translate }}</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>{{ 'table.posts.id.title' | translate }}</th>
       <td mat-cell *matCellDef="let row">
          {{ row.id }}
       </td>
@@ -53,7 +54,7 @@
 
    <!-- title -->
    <ng-container matColumnDef="title">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>{{ 'table.posts.title.title ' | translate }}</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>{{ 'table.posts.title.title' | translate }}</th>
       <td mat-cell *matCellDef="let row">
          {{ row.title }}
       </td>
@@ -87,7 +88,7 @@
       </td>
    </ng-container>
 
-   <tr mat-header-row *matHeaderCellDef="displayedColumns"></tr>
+   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
 
