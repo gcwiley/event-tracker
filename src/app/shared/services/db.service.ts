@@ -20,7 +20,7 @@ async function loadRxDBPlugin(): Promise<void> {
   // if it is, it activates special tools for debugging and development within the database system
   // if it is not, it skips these tools
   if (isDevMode()) {
-    addRxPlugin(RxDBDevModePlugin);
+    addRxPlugin(RxDBDevModePlugin)
   }
 }
 
