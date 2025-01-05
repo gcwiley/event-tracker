@@ -62,10 +62,14 @@ export class RxdbProvider {
     // if no errors, create the database
     this.rxDatabase = await createRxDatabase({
       name: databaseName,
-      // comment
+      // use the dexie RxStorage in the browser
       storage: getRxStorageDexie(),
-      // comment
+      // use to create encrypyted fields in the collections of the database
       password: 'myLongAndStupidPassword',
+      // enable event sharing between two instances
+      multiInstance: true,
+      // optimize observer or recurring queries
+      eventReduce: true,
     });
 
     // adds the collection to database
