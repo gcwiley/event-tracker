@@ -2,7 +2,8 @@
 export interface Event {
     id: string;
     summary: string;
-    // fix this!
+    createdAt: string;
+    updatedAt: string;
 }
 
 export type EventInput = Omit<Event, 'id'>

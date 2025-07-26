@@ -15,15 +15,16 @@ export const eventSchema: RxJsonSchema<Event> = {
          type: 'string',
          maxLength: 100,
       },
-      title: {
-         type: 'string',
-      },
-      body: {
+      summary: {
          type: 'string',
       },
       createdAt: {
          type: 'string',
          format: 'date-time',
       },
+      updatedAt: {
+         type: 'string',
+         format: 'date-time'
+      }
    },
 };

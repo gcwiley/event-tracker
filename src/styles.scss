@@ -1,5 +1,7 @@
 @use '@angular/material' as mat;
 
+// sets up the modern angular material themeing system
+
 html {
   color-scheme: light dark;
   @include mat.theme(
