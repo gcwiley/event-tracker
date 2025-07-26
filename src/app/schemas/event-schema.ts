@@ -1,16 +1,18 @@
 import { RxJsonSchema } from 'rxdb';
 
-// define the post schema
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const dbSchema: RxJsonSchema<any> | any = {
-   title: 'posts schema',
+// event schema
+import { Event } from '../types/event.interface';
+
+// define the event schema
+export const eventSchema: RxJsonSchema<Event> = {
+   title: 'event schema',
+   description: 'update',
    version: 0,
    type: 'object',
    primaryKey: 'id',
    properties: {
       id: {
          type: 'string',
-         primary: true,
          maxLength: 100,
       },
       title: {
