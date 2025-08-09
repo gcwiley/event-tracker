@@ -42,7 +42,7 @@ export class PostDeleteDirective {
       .pipe(
         first(),
         filter((res) => !!res),
-        switchMap(() => this.apiService.delete(this.id()))
+        switchMap(() => this.apiService.deletePostById(this.id()))
       )
       .subscribe({
         next: () => {

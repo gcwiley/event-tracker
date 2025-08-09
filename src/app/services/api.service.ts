@@ -29,11 +29,11 @@ export class ApiService<T> {
    }
 
    // creates a new post
-   public create(body: Partial<T>) {
+   public createPost(body: Partial<T>) {
       // from() converts promises from the RxDB operations into Observables
       return from(
          this.collection.insert({
-            // create unique id for new post
+            // create a unique id for new post
             id: uuidv4(),
             ...body,
             // adds the current timestamp
@@ -44,7 +44,7 @@ export class ApiService<T> {
    }
 
    // partially updates an existing posts. it finds the post by ID and updates the specified fields. 
-   public patch(id: string, body: Partial<T>) {
+   public updatePostById(id: string, body: Partial<T>) {
       return from(
          this.collection.findOne({ selector: { id } }).update({
             $set: { id, ...body },
@@ -58,12 +58,12 @@ export class ApiService<T> {
    }
 
    // retrieves a single post by its ID
-   public detail(id: string) {
+   public getPostById(id: string) {
       return from(this.collection.findOne({ selector: { id } }).exec()).pipe(map((doc) => doc._data));
    }
 
    // deletes a post by ID
-   public delete(id: string) {
+   public deletePostById(id: string) {
       return from(this.collection.findOne({ selector: { id } }).remove()).pipe(map((doc) => doc._data));
    }
 
@@ -86,14 +86,16 @@ export class ApiService<T> {
       ).pipe(map((docs) => docs.map((doc) => doc._data)));
    }
 
-   // returns the total number of posts in the collection
-   public count() {
+   // returns the total number of posts in the post collection
+   public countPosts() {
+      // .exec() executes the query and returns a Promise that resolves with the count (a number)
+      // from() takes a promise and converts it into an RxJs Observable.
       return from(this.collection.count().exec());
    }
 
    // this is a crucial method. it uses 'combineLatest' from 'RxJS' to combine the results of list and count. This ensures that both the list of posts and the total count are retrived and then returned as a single object. this is more efficient than making two separate calls.
    public listAndCount(input: PostListInput) {
-      return combineLatest([this.list(input), this.count()]).pipe(
+      return combineLatest([this.list(input), this.countPosts()]).pipe(
          map(([items, totalCount]) => ({
             items,
             totalCount,
