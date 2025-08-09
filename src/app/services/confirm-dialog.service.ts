@@ -1,15 +1,20 @@
-import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Injectable, inject } from '@angular/core';
+
+// rxjs
 import { Observable } from 'rxjs';
 
-// import the confirm dialog component
+// angular material
+import { MatDialog } from '@angular/material/dialog';
+
+// confirm dialog
 import { ConfirmDialogComponent } from '../components/confirm-dialog/confirm-dialog.component';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ConfirmDialogService {
-  constructor(private dialog: MatDialog) {}
+  // inject dependencies
+  private dialog = inject(MatDialog);
 
   public open(title: string, content: string): Observable<boolean> {
     // opens the dialog

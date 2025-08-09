@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
 
-// import the angular material modules
+// angular material 
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -11,6 +10,6 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './not-found.component.html',
   styleUrl: './not-found.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatCardModule, MatIconModule, TranslateModule],
+  imports: [MatCardModule, MatIconModule],
 })
 export class NotFoundComponent {}

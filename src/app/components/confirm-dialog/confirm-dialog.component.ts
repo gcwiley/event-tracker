@@ -1,7 +1,6 @@
-// Import necessary modules from Angular core
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 
-// Import Angular Material modules for dialog and button functionality
+// angular material
 import { MatButtonModule } from '@angular/material/button';
 import {
   MAT_DIALOG_DATA,
@@ -21,27 +20,16 @@ export interface ConfirmDialogData {
   content: string;
 }
 
-/**
- * Component representing a confirm dialog.
- */
 @Component({
-  // Selector for the component
+  standalone: true,
   selector: 'app-confirm-dialog',
-  // Path to the component's HTML template
   templateUrl: './confirm-dialog.component.html',
-  // Path to the component's SCSS stylesheet
   styleUrl: './confirm-dialog.component.scss',
-  // Configures the component to use the 'OnPush' change detection strategy
   changeDetection: ChangeDetectionStrategy.OnPush, 
-  // Imports necessary modules for the component
   imports: [MatDialogModule, MatButtonModule, TranslateModule], 
 })
 export class ConfirmDialogComponent {
-  /**
-   * Constructor for the ConfirmDialogComponent.
-   * @param data Data to be displayed in the dialog (title and content).
-   * @param dialogRef Reference to the dialog instance.
-   */
+  
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: ConfirmDialogData,
     public dialogRef: MatDialogRef<ConfirmDialogComponent>

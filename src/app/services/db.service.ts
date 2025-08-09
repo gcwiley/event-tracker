@@ -11,9 +11,7 @@ import { dbSchema } from '../schemas/schema'
 
 // add a plugin to the library
 async function loadRxDBPlugin(): Promise<void> {
-  // comment
   addRxPlugin(RxDBAttachmentsPlugin);
-  // comment
   addRxPlugin(RxDBUpdatePlugin);
 
   // this code checks if the app is in development.
@@ -33,7 +31,6 @@ loadRxDBPlugin();
 export class RxdbProvider {
   private rxDatabase!: RxDatabase;
   private dataBaseReadySubj = new BehaviorSubject<boolean>(false);
-  // find out what this does
   public dataBaseReady$ = this.dataBaseReadySubj.asObservable();
 
   // gets the name of the collection within the database
@@ -50,7 +47,6 @@ export class RxdbProvider {
 
   // sets up the database
   public async initDB(databaseName: string): Promise<RxDatabase> {
-    // error checking code
     if (
       this.rxDatabase &&
       this.rxDatabase.name === databaseName &&
